@@ -1,7 +1,7 @@
 package com.example;
 
-import io.opentracing.Span;
-import io.opentracing.util.GlobalTracer;
+// import io.opentracing.Span;
+// import io.opentracing.util.GlobalTracer;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -15,11 +15,11 @@ import java.util.Map;
 
 @WebServlet (value={"/echo","/echo/"}, name="echoServlet")
 public class EchoServlet  extends HttpServlet {
-	private @Resource(name="jdbc/AppianAnywherePrimary") DataSource ds;
+	//private @Resource(name="jdbc/MyDs") DataSource ds;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Span span = GlobalTracer.get().buildSpan("echoServletDoGet").start();
+		//Span span = GlobalTracer.get().buildSpan("echoServletDoGet").start();
 		simulateWork();
 		StringBuilder sb = new StringBuilder(req.getRequestURL());
 		if(req.getQueryString() != null) sb.append("?").append(req.getQueryString());
@@ -30,11 +30,11 @@ public class EchoServlet  extends HttpServlet {
 			sb.append(" : ");
 			sb.append(entry.getValue()[0]);
 		}
-		new WorkTest().doWork();
-		new SqlWork().doWork(ds);
+		//new WorkTest().doWork();
+		//new SqlWork().doWork(ds);
 		simulateWork();
 		resp.getWriter().println(sb.toString());
-		span.finish();
+		//span.finish();
 	}
 
 	public void simulateWork() {

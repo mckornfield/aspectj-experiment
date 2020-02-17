@@ -1,11 +1,11 @@
 package com.example;
 
-import io.jaegertracing.Configuration;
-import io.jaegertracing.internal.JaegerTracer;
-import io.jaegertracing.internal.samplers.ConstSampler;
-import io.opentracing.Span;
-import io.opentracing.Tracer;
-import io.opentracing.util.GlobalTracer;
+// import io.jaegertracing.Configuration;
+// import io.jaegertracing.internal.JaegerTracer;
+// import io.jaegertracing.internal.samplers.ConstSampler;
+// import io.opentracing.Span;
+// import io.opentracing.Tracer;
+// import io.opentracing.util.GlobalTracer;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

@@ -1,10 +1,10 @@
 package com.example;
 
-import io.jaegertracing.Configuration;
-import io.jaegertracing.internal.samplers.ConstSampler;
-import io.opentracing.Tracer;
-import io.opentracing.contrib.web.servlet.filter.TracingFilter;
-import io.opentracing.util.GlobalTracer;
+// import io.jaegertracing.Configuration;
+// import io.jaegertracing.internal.samplers.ConstSampler;
+// import io.opentracing.Tracer;
+// import io.opentracing.contrib.web.servlet.filter.TracingFilter;
+// import io.opentracing.util.GlobalTracer;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
@@ -17,45 +17,45 @@ import java.util.EnumSet;
 public class TracingServletContextListener implements ServletContextListener {
   //private Tracer tracer;
 
-  public Tracer tracer() {
-    Configuration.SamplerConfiguration samplerConfig = Configuration.SamplerConfiguration.fromEnv()
-        .withType(ConstSampler.TYPE)
-        .withParam(1);
+  // public Tracer tracer() {
+  //   Configuration.SamplerConfiguration samplerConfig = Configuration.SamplerConfiguration.fromEnv()
+  //       .withType(ConstSampler.TYPE)
+  //       .withParam(1);
 
-    Configuration.ReporterConfiguration reporterConfig = Configuration.ReporterConfiguration.fromEnv()
-        .withLogSpans(true);
+  //   Configuration.ReporterConfiguration reporterConfig = Configuration.ReporterConfiguration.fromEnv()
+  //       .withLogSpans(true);
 
-    Configuration config = new Configuration("Appian")
-        .withSampler(samplerConfig)
-        .withReporter(reporterConfig);
+  //   Configuration config = new Configuration("MyConfig")
+  //       .withSampler(samplerConfig)
+  //       .withReporter(reporterConfig);
 
-    return config.getTracer();
-  }
+  //   return config.getTracer();
+  // }
 
-  private void ensureTracerLoaded() {
-    //    tracer = tracer();
-    //    GlobalTracer.registerIfAbsent(tracer);
-    Class exampleClass = null;
-    try {
-      exampleClass = Class.forName("app.TracerInitializer");
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-    }
-    try {
-      exampleClass.newInstance(); // force instantiation of class in tomcat lib
-    } catch (InstantiationException e) {
-      e.printStackTrace();
-    } catch (IllegalAccessException e) {
-      e.printStackTrace();
-    }
-  }
+  // private void ensureTracerLoaded() {
+  //   //    tracer = tracer();
+  //   //    GlobalTracer.registerIfAbsent(tracer);
+  //   Class exampleClass = null;
+  //   try {
+  //     exampleClass = Class.forName("app.TracerInitializer");
+  //   } catch (ClassNotFoundException e) {
+  //     e.printStackTrace();
+  //   }
+  //   try {
+  //     exampleClass.newInstance(); // force instantiation of class in tomcat lib
+  //   } catch (InstantiationException e) {
+  //     e.printStackTrace();
+  //   } catch (IllegalAccessException e) {
+  //     e.printStackTrace();
+  //   }
+  // }
 
   @Override
   public void contextInitialized(ServletContextEvent servletContextEvent) {
-    ensureTracerLoaded();
-    TracingFilter filter = new TracingFilter(GlobalTracer.get());
-    FilterRegistration.Dynamic reg = servletContextEvent.getServletContext().addFilter("tracingFilter", filter);
-    reg.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
+    // ensureTracerLoaded();
+    // TracingFilter filter = new TracingFilter(GlobalTracer.get());
+    // FilterRegistration.Dynamic reg = servletContextEvent.getServletContext().addFilter("tracingFilter", filter);
+    // reg.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
     System.out.println("TracingServletContextListener contextInitialized");
   }
 
