@@ -21,8 +21,8 @@ pushd contract
 ./gradlew publishToMavenLocal
 popd
 docker run -it --rm -v "$PWD":/target:delegated -v ~/.m2:/root/.m2:delegated -w /target tomcat-base mvn clean install
-pushd aopjar
-./gradlew jar
-popd
+# pushd aopjar
+# ./gradlew jar
+# popd
 
 docker-compose up

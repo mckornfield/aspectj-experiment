@@ -14,7 +14,7 @@ services:
       - .:/target:delegated
       - ./glowroot:/glowroot:delegated
       - ~/.m2/repository/ServletFilterExample/ServletFilterExample/1.0-SNAPSHOT/ServletFilterExample-1.0-SNAPSHOT.war:$CATALINA_HOME/webapps/ServletFilterExample.war
-      - ./aopjar/build/libs/aopjar.jar:$CATALINA_HOME/lib/aopjar.jar
+      # - ./aopjar/build/libs/aopjar.jar:$CATALINA_HOME/lib/aopjar.jar
       - ./docker-build/aop.xml:$CATALINA_HOME/aop.xml
       - ./contract/build/libs/contract-1.0.0.jar:$CATALINA_HOME/lib/contract-1.0.0.jar
 
