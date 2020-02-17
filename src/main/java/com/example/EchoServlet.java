@@ -15,7 +15,7 @@ import java.util.Map;
 
 @WebServlet (value={"/echo","/echo/"}, name="echoServlet")
 public class EchoServlet  extends HttpServlet {
-	//private @Resource(name="jdbc/MyDs") DataSource ds;
+	private @Resource(name="jdbc/MyDs") DataSource ds;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class EchoServlet  extends HttpServlet {
 			sb.append(entry.getValue()[0]);
 		}
 		//new WorkTest().doWork();
-		//new SqlWork().doWork(ds);
+		new SqlWork().doWork(ds);
 		simulateWork();
 		resp.getWriter().println(sb.toString());
 		//span.finish();

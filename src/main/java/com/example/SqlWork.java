@@ -2,6 +2,7 @@ package com.example;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.Random;
 
@@ -14,8 +15,8 @@ public class SqlWork {
     Connection con=null;
     try
     {
-	//DriverManager.registerDriver(new org.h2.Driver());
-	//DriverManager.registerDriver(new io.opentracing.contrib.jdbc.TracingDriver());
+	    DriverManager.registerDriver(new org.h2.Driver());
+	    //DriverManager.registerDriver(new io.opentracing.contrib.jdbc.TracingDriver());
 
       //Reference to connection interface
       con = ds.getConnection();
