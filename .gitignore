@@ -1,0 +1,6 @@
+
+glowroot
+tomcat/webapps
+tomcat/logs
+/.idea
+/target
