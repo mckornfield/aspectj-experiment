@@ -9,12 +9,12 @@ public class SqlInterceptorImpl implements SqlInterceptor {
 
   @Override
   public void start() {
-    System.out.println("In end");
+    System.out.println("In start");
   }
 
   @Override
   public void end() {
-    System.out.println("In start");
+    System.out.println("In end");
     sqlCount.inc();
   }
 }

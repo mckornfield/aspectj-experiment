@@ -53,6 +53,11 @@ public class TracingServletContextListener implements ServletContextListener {
     // TracingFilter filter = new TracingFilter(GlobalTracer.get());
     // FilterRegistration.Dynamic reg = servletContextEvent.getServletContext().addFilter("tracingFilter", filter);
     // reg.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
+    /*
+      webapp registers the actual SqlInterceptor with the registry due to classpath
+      reasons (this allows us to keep all the Prometheus/Tracing jars in webapp
+      instead of having to stuff in tomcat/lib).
+    */
     SqlInterceptorRegistry.getInstance().register(new SqlInterceptorImpl());
     System.out.println("TracingServletContextListener contextInitialized");
   }
